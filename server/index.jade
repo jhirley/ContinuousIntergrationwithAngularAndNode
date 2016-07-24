@@ -1,5 +1,6 @@
 link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
-body(ng-app = 'app')
+link(rel='stylesheet', href='bower_components/angular/angular-csp.css')
+body(ng-app = 'app', ngCloak)
 	.container
 		h1 Find a Job Today!
 		div(ng-controller = 'testCtrl')
