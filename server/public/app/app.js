@@ -1,17 +1,8 @@
 'use strict';
 
-angular.module('app',[]);
+angular.module('app',['ngResource']);
 
-angular.module('app').controller('testCtrl', function($scope){
-	$scope.jobs = [{
-		title: 'Sales Person',
-		description: 'Will fight dragons'
-	},{
-		title: 'Accountant',
-		description: 'Will use a keyboard'
-	},{
-		title: 'Carebear Wrangler',
-		description: 'Will fight with adult children'
-	}];
+angular.module('app').controller('testCtrl', function($scope, $resource){
+	$scope.jobs = $resource('/api/jobs').query();
 	$scope.test = 'working';
 });
