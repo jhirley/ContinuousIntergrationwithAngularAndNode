@@ -24,13 +24,23 @@ var nodemonEntryPoint = 'server.js';
 
 
 gulp.task('mocha-test', function() {
+//     return gulp.src(jsTestFiles, {read: false})
+//         // gulp-mocha needs filepaths so you can't have any plugins before it
+//         .pipe(mocha({reporter: 'spec',
+//             clearRequireCache: true,
+//             ignoreLeaks: true}));//'nyan'}));
+// });
     return gulp.src(jsTestFiles, {read: false})
-        // gulp-mocha needs filepaths so you can't have any plugins before it
         .pipe(mocha({reporter: 'spec',
             clearRequireCache: true,
-            ignoreLeaks: true}));//'nyan'}));
+            ignoreLeaks: true}));
+        // .once('error', function () {
+        //     process.exit(1);
+        // })
+        // .once('end', function () {
+        //     process.exit();
+        // });
 });
-
 
 gulp.task('style', function () {
     gulp.src(jsFiles)
