@@ -7,6 +7,11 @@ var app = express();
 
 var dataSavedJob;
 var db = {
+	findJobs: function(){
+		return new Promise(function(resolve, reject){
+			resolve(['hi']);
+		});
+	},
 	saveJob: function(job) {
 		dataSavedJob = job;
 	}
@@ -17,6 +22,18 @@ var JobService = require('../jobs-service')(db, app);
 // var Promise = require('bluebird');
 // mongoose.Promise = require('bluebird');
 // var jobsData = require('../jobs-data.js');
+
+describe('get jobs', function(){
+	it('should give us a list of jobs in json', function(done){
+		request(app).get('/api/jobs')
+		.expect('Content-Type', /json/)
+		.end(function(err, res) {
+			console.log(res.body);
+			expect(res.body).to.be.a('Array');
+			done();
+		});
+	});
+});
 
 describe('save jobs', function(){
 	it('should validate that the title is greater than 4 characters ');
