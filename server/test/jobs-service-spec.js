@@ -2,6 +2,16 @@
 
 var expect = require('chai').expect;
 var request = require('supertest');
+var express = require('express');
+var app = express();
+
+var dataSavedJob;
+var db = {
+	saveJob: function(job) {
+		dataSavedJob = job;
+	}
+};
+var JobService = require('../jobs-service')(db, app);
 // var JobModel = require('../models/job');
 // var mongoose = require('mongoose');
 // var Promise = require('bluebird');
@@ -14,11 +24,14 @@ describe('save jobs', function(){
 	it('should validate that the description is greater than 4 characters ');
 	it('should validate that the description is less than 250 characters ');
 
-	var dataSavedJob;
+	
 	var newJob = {title: 'Sales Person', description: 'Will fight dragons'};
 
-	it('should pass the job to the database and save', function() {
-		expect(dataSavedJob).to.deep.equal(newJob);
+	it('should pass the job to the database and save', function(done) {
+		request(app).post('/api/jobs').send(newJob).end(function( error, response ){
+			expect(dataSavedJob).to.deep.equal(newJob);
+			done();
+		});
 	});
 	it('should return a status of 200 to the front end if the database saved');
 	it('should return a job with an id');
