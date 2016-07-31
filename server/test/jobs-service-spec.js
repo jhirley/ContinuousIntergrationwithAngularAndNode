@@ -4,6 +4,11 @@ var expect = require('chai').expect;
 var request = require('supertest');
 var express = require('express');
 var app = express();
+// var JobModel = require('../models/job');
+// var mongoose = require('mongoose');
+var Promise = require('bluebird');
+// mongoose.Promise = require('bluebird');
+// var jobsData = require('../jobs-data.js');
 
 var dataSavedJob;
 var db = {
@@ -17,11 +22,7 @@ var db = {
 	}
 };
 var JobService = require('../jobs-service')(db, app);
-// var JobModel = require('../models/job');
-// var mongoose = require('mongoose');
-// var Promise = require('bluebird');
-// mongoose.Promise = require('bluebird');
-// var jobsData = require('../jobs-data.js');
+
 
 describe('get jobs', function(){
 	it('should give us a list of jobs in json', function(done){
