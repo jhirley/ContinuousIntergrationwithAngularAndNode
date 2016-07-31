@@ -22,6 +22,10 @@
     "gulp-nodemon": "^2.1.0",
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.2.0",
+    "karma": "^1.1.2",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-mocha": "^1.1.1",
     "supertest": "^2.0.0",
     "wiredep": "^4.0.0"
   },
