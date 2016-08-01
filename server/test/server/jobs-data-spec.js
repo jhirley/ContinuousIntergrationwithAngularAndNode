@@ -1,11 +1,11 @@
 'use strict';
 
 var expect = require('chai').expect;
-var JobModel = require('../models/job');
+var JobModel = require('../../models/job');
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 mongoose.Promise = require('bluebird');
-var jobsData = require('../jobs-data.js');
+var jobsData = require('../../jobs-data.js');
 
  function resetJobs() {
  	return new Promise( function( resolve, reject) {
