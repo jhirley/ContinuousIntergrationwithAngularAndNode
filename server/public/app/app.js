@@ -12,5 +12,5 @@ angular.module('app').controller('testCtrl', function($scope, $resource,jobs){
 		jobs.save(job);
 		$scope.jobs.push(job);
 
-	}
+	};
 });
